@@ -30,4 +30,11 @@ public class MainActivity extends AppCompatActivity {
         registerReceiver(modoAvion, cambio);
 
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        // Desregistro el receiver
+        unregisterReceiver(modoAvion);
+    }
 }

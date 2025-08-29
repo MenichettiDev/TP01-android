@@ -10,18 +10,18 @@ public class ModoAvionReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        if (Intent.ACTION_AIRPLANE_MODE_CHANGED.equals(intent.getAction())) {
-            boolean isAirplaneModeOn = intent.getBooleanExtra("state", false);
 
-            if (isAirplaneModeOn) {
+            boolean modeOn = intent.getBooleanExtra("state", false);
+
+            if (modeOn) {
                 Toast.makeText(context, "Llamando al Profe...", Toast.LENGTH_SHORT).show();
-                Intent callIntent = new Intent(Intent.ACTION_DIAL);
-                callIntent.setData(Uri.parse("tel:2664553747"));
-                callIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(callIntent);
+                Intent llamada = new Intent(Intent.ACTION_DIAL);
+                llamada.setData(Uri.parse("tel:2664553747"));
+                llamada.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(llamada);
             }else{
                 Toast.makeText(context, "Cancelando llamada", Toast.LENGTH_SHORT).show();
             }
-        }
+
     }
 }
